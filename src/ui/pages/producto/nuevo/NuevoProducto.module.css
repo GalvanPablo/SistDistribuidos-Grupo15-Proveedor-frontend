@@ -1,7 +1,60 @@
+.view_container{
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    gap: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
 .info {
     max-width: 500px;
     display: flex;
     flex-direction: column;
 
     gap: 10px;
+}
+
+.input_talleColor {
+    width: 70%;
+}
+
+.input__label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.contenedor__tabla {
+    margin-top: 0.5rem;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cabeceraColor, .celdaTalle {
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.celdaColor {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
 }
