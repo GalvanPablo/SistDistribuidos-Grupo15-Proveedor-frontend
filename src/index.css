@@ -12,10 +12,12 @@ ul {
 }
 
 :root {
-  --primary-color: #788AA3;
-  --seconday_color: #6E6362;
-  --dark-color: #01172F;
+  --primary-color: #62466B;
+  --secondary-color: #B9C0DA;
+  --dark-color: #45364B;
+
   --white-color: #F1F2EB;
   --green-color: #00A676;
+  --yellow-color: #FFF07C;
 }
 
