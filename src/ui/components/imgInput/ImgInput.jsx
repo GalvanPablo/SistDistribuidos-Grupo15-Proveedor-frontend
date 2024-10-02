@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styles from './ImgInput.module.css'
-const ImgInput = ({ label, onChange, urlImgDefault }) => {
-    const [imagenURL, setImagenURL] = useState('');
+const ImgInput = ({ label, onChange, urlImgDefault, value }) => {
+    const [imagenURL, setImagenURL] = useState(value);
+
+    useEffect(() => {
+        setImagenURL(value);
+    }, [value])
 
     const manejarCambio = (evento) => {
         const url = evento.target.value
