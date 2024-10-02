@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import styles from './ImgInput.module.css'
-const ImgInput = ({ label, onChange, urlImgDefault, value }) => {
+const ImgInput = ({ label, onChange, urlImgDefault, value, enabled = true }) => {
     const [imagenURL, setImagenURL] = useState(value);
 
     useEffect(() => {
@@ -24,6 +24,7 @@ const ImgInput = ({ label, onChange, urlImgDefault, value }) => {
                     value={imagenURL}
                     onChange={manejarCambio}
                     placeholder="Ingrese la URL de la imagen"
+                    disabled={!enabled}
                 />
                 <img
                     className={styles.imagenPrevisualizacion}

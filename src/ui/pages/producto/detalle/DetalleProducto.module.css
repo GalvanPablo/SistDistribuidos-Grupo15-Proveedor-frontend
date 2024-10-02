@@ -1,0 +1,84 @@
+.info_container {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+
+    gap: 50px;
+}
+
+.info {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info_identificadores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tabla_container div {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.tabla {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.tabla_encabezado {
+    text-align: left;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla__cuerpo {
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla__fila {
+    border-top: 1px solid #ddd;
+}
+
+.tabla__fila:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla th,
+.tabla td {
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla th {
+    font-weight: bold;
+}
+
+.cantidad {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.input_cantidad {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    width: 100px;
+    box-sizing: border-box;
+}
+
+.input_cantidad_cancelar {
+    background-color: transparent;
+    border: none;
+}
+
+.icon_cancelar {
+    font-size: 1rem;
+    color: var(--dark-color);
+}
