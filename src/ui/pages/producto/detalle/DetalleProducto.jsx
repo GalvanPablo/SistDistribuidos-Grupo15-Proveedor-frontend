@@ -180,10 +180,7 @@ const DetalleProducto = () => {
                             ))}
                         </tbody>
                     </table>
-                    {mostrarActualizar && (
-
-                        <button onClick={hanldeActualizarStock}>Actualizar Stock</button>
-                    )}
+                    <button onClick={hanldeActualizarStock} className={styles.btnActualizar} disabled={!mostrarActualizar}>Actualizar Stock</button>
                 </div>
             </div>
             {/* <button onClick={() => handleGuardarCambios()}>Guardar Cambios</button> */}

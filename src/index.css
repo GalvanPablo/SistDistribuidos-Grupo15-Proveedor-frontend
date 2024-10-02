@@ -13,6 +13,8 @@ ul {
 
 :root {
   --primary-color: #62466B;
+  --primary-color-light: rgba(98, 70, 107, 0.85);
+  --primary-color-light2: rgba(98, 70, 107, 0.7);
   --secondary-color: #B9C0DA;
   --dark-color: #45364B;
 
