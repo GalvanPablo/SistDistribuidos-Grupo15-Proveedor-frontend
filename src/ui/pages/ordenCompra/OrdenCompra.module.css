@@ -13,7 +13,7 @@
 }
 
 .toolbar .nuevo, .toolbar button {
-    background-color: var(--seconday_color);
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -21,12 +21,12 @@
     cursor: pointer;
 }
 
-.toolbar .nuevo{
-    text-decoration: none;
+.toolbar .nuevo:hover, .toolbar button:hover{
+    background-color: var(--dark-color);
 }
 
-.toolbar button:hover {
-    background-color: #3e8e41;
+.toolbar .nuevo{
+    text-decoration: none;
 }
 
 .toolbar__filtro__container {
@@ -63,6 +63,11 @@
     background-color: #f0f0f0;
     border-bottom: 1px solid #ddd;
 }
+
+.columna_acciones {
+    width: 100px;
+}
+
 
 .tabla__cuerpo {
     border-bottom: 1px solid #ddd;

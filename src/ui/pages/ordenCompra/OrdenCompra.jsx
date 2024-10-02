@@ -30,18 +30,18 @@ const OrdenCompra = () => {
 
     const Item = ({ordenCompra}) => (
         <tr className={styles.tabla__fila}>
-        <td>{ordenCompra.idOrden}</td>
-        <td>{ordenCompra.estado}</td>
-        <td>{ordenCompra.observaciones}</td>
-        <td>{ordenCompra.tienda}</td>
-        <td>{ordenCompra.fechaSolicitud.toLocaleDateString()}</td>
-        <td>{ordenCompra.fechaRecepcion.toLocaleDateString()}</td>
-        <td>
-          <Link to={`/ordenes_de_compra/detalle/${ordenCompra.idOrden}`} className={styles.nuevo}>
-             <FontAwesomeIcon icon={faFilePen} className={styles.icono_detalles}/>
-          </Link>
-        </td>
-    </tr>
+          <td>{ordenCompra.idOrden}</td>
+          <td>{ordenCompra.estado}</td>
+          <td>{ordenCompra.observaciones}</td>
+          <td>{ordenCompra.tienda}</td>
+          <td>{ordenCompra.fechaSolicitud.toLocaleDateString()}</td>
+          <td>{ordenCompra.fechaRecepcion.toLocaleDateString()}</td>
+          <td>
+             <Link to={`/ordenes_de_compra/detalle/${ordenCompra.idOrden}`} className={styles.nuevo}>
+               <FontAwesomeIcon icon={faFilePen} className={styles.icono_detalles}/>
+             </Link>
+          </td>
+        </tr>
 
     )
 
@@ -49,7 +49,7 @@ const OrdenCompra = () => {
      <>   
         <h1>Listado de Orden de Compra</h1>
           <div className={styles.listado}>
-          <div className={styles.toolbar}>
+               <div className={styles.toolbar}>
                 
                     <div className={styles.toolbar__filtro__container}>
                         <input type="text" name="" id="" placeholder='Estado' onChange={(e) => setEstado(e.target.value)} />
@@ -57,10 +57,11 @@ const OrdenCompra = () => {
                         <input type="text" name="" id="" placeholder='Fecha Solicitud' onChange={(e) => setFechaSolicitud(e.target.value)} />
                         <input type="text" name="" id="" placeholder='Fecha Recepcion' onChange={(e) => setFechaRecepcion(e.target.value)} />
                         <button>
-                            <FontAwesomeIcon icon={faFilter} />
+                            <FontAwesomeIcon className={styles.nuevo} icon={faFilter} />
                         </button> 
                     </div>
-                </div>
+
+               </div>
 
 
             <table className={styles.tabla}>
