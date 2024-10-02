@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,14 +17,6 @@ const DetalleProducto = () => {
     const [urlImagen, setUrlImagen] = useState('');
     const [variaciones, setVariaciones] = useState([]);
 
-    const handleGuardarCambios = () => {
-        const producto = {
-            codigo,
-            nombre,
-            urlImagen
-        }
-    };
-
     // TRAER DATOS
     useEffect(() => {
         setNombre('Jean');
@@ -36,7 +28,34 @@ const DetalleProducto = () => {
         ]);
     }, []);
 
-    const Item = ({ variacion }) => {
+    const cantidadRefs = useRef([]);
+    useEffect(() => {
+        cantidadRefs.current = new Array(variaciones.length).fill(null);
+    }, [variaciones]);
+
+    const handleGuardarCambios = () => {
+        const nuevasVariaciones = [];
+        cantidadRefs.current.forEach((ref, index) => {
+            if (ref !== null) {
+                nuevasVariaciones.push({
+                    talleId: variaciones[index].talleId,
+                    colorId: variaciones[index].colorId,
+                    cantidad: parseInt(ref.value),
+                });
+            }
+        });
+
+        const producto = {
+            codigo,
+            nombre,
+            urlImagen,
+            nuevasVariaciones
+        }
+
+        console.log(producto);
+    };
+
+    const Item = ({ variacion, index }) => {
         const cantidadOriginal = parseInt(variacion.cantidad);
         const [cantidad, setCantidad] = useState(variacion.cantidad);
         const [editado, setEditado] = useState(false);
@@ -44,7 +63,6 @@ const DetalleProducto = () => {
         const handleEditarItem = (e) => {
             const cantidadActual = parseInt(e.target.value);
             setCantidad(cantidadActual);
-            console.log(`Valor orifinal: ${cantidadOriginal}\nValor actual: ${cantidadActual}`)
             setEditado(cantidadActual !== cantidadOriginal);
         };
 
@@ -59,6 +77,7 @@ const DetalleProducto = () => {
                 <td>{variacion.colorNombre}</td>
                 <td>
                     <input
+                        ref={(ref) => (cantidadRefs.current[index] = ref)}
                         type="number"
                         value={cantidad}
                         min="0"
