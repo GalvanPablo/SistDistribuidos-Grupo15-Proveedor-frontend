@@ -21,7 +21,7 @@ const Producto = () => {
         <tr className={styles.tabla__fila}>
             <td>{producto.codigo}</td>
             <td>{producto.nombre}</td>
-            <td>
+        <td className={styles.icono_detalles}>
                 <Link to={`/productos/detalle/${producto.codigo}`} title='ver detalle'>
                     <FontAwesomeIcon icon={faFilePen} className={styles.icono_detalles} />
                 </Link>
@@ -49,7 +49,7 @@ const Producto = () => {
                         <tr>
                             <th className={styles.columna_codigo}>Código</th>
                             <th>Nombre</th>
-                            <th className={styles.columna_acciones}>Acciones</th>
+                            <th className={styles.columna_acciones} style={{textAlign: 'center'}}>Ver detalle</th>
                         </tr>
                     </thead>
                     <tbody className={styles.tabla__cuerpo}>

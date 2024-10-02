@@ -65,7 +65,7 @@
 }
 
 .columna_acciones {
-    width: 100px;
+    width: 125px;
 }
 
 
@@ -91,9 +91,13 @@
 }
 
 .icono_detalles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     color: var(--dark-color);
 }
 
 .icono_detalles:hover {
-    color: var(--seconday_color);
+    color: var(--primary-color);
 }

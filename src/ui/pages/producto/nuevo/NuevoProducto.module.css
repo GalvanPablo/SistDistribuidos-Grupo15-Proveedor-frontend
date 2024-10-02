@@ -1,4 +1,4 @@
-.view_container{
+.view_container {
     width: 100%;
 }
 
@@ -40,7 +40,8 @@ form {
     border-collapse: collapse;
 }
 
-.cabeceraColor, .celdaTalle {
+.cabeceraColor,
+.celdaTalle {
     color: #333;
     padding: 10px;
     text-align: center;
@@ -57,4 +58,19 @@ form {
     width: 20px;
     height: 20px;
     margin: 0 auto;
+}
+
+.boton {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: var(--dark-color);
 }

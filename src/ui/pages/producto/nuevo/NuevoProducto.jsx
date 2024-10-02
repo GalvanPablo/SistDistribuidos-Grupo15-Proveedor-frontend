@@ -56,6 +56,7 @@ const NuevoProducto = () => {
 
     return (
         <div className={styles.view_container}>
+            <h1>Nuevo Producto</h1>
             <form action="">
                 <div className={styles.info}>
                     <TextInput
@@ -71,6 +72,9 @@ const NuevoProducto = () => {
                         urlImgDefault={'https://cdn.icon-icons.com/icons2/1886/PNG/512/tshirt_120689.png'}
                         label={'Foto del producto'}
                     />
+                    <button onClick={nuevoProducto} className={styles.boton}>
+                        Crear
+                    </button>
                 </div>
                 <div className={styles.input_talleColor}>
                     <span className={styles.input__label}>Colores y talles disponibles</span>
@@ -104,11 +108,8 @@ const NuevoProducto = () => {
                         </table>
                     </div>
                 </div>
-                <button onClick={nuevoProducto} className={styles.boton}>
-                    Nuevo Producto
-                </button>
             </form>
-        </div>
+        </div >
     )
 }
 
