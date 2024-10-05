@@ -50,7 +50,7 @@
 }
 
 .toolbar__filtro__container button:hover {
-    background-color: #3e8e41;
+    background-color: #3d3246;
 }
 
 .tabla {
@@ -96,4 +96,13 @@
 
 .icono_detalles:hover {
     color: var(--seconday_color);
+}
+
+.icono__filtro {
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.icono__filtro:hover, .icono__filtro:focus {
+    color: #d6ceda;
 }

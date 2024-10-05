@@ -57,7 +57,7 @@ const OrdenCompra = () => {
                         <input type="text" name="" id="" placeholder='Fecha Solicitud' onChange={(e) => setFechaSolicitud(e.target.value)} />
                         <input type="text" name="" id="" placeholder='Fecha Recepcion' onChange={(e) => setFechaRecepcion(e.target.value)} />
                         <button>
-                            <FontAwesomeIcon className={styles.nuevo} icon={faFilter} />
+                            <FontAwesomeIcon icon={faFilter} className={styles.icono__filtro}/>
                         </button> 
                     </div>
 

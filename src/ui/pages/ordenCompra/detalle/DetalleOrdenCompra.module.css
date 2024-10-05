@@ -97,3 +97,15 @@
 .icono_detalles:hover {
     color: var(--seconday_color);
 }
+
+.tabla__iconoRojo {
+    color:red;
+}
+
+.tabla__iconoAmarillo {
+    color:yellow;
+}
+
+.tabla__iconoVerde {
+    color:green;
+}
