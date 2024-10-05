@@ -1,17 +1,20 @@
-const API_URL = 'https://localhost:7035/'
+const API_URL = 'http://localhost:8001/'
 
 export const API_PRODUCTO = {
-    ALTA: API_URL + 'Producto/CrearProducto',
-    BAJA: API_URL + 'Producto/EliminarProducto',
-    MODIFICAR: API_URL + 'Producto/ModificarProducto',
+    ALTA: API_URL + 'productos/crear',
 
-    LISTADO: API_URL + 'Producto/TraerProducto',
-    DETALLE: API_URL + 'Producto/Detalle',
+    // BAJA: API_URL + 'Producto/EliminarProducto',
+    // MODIFICAR: API_URL + 'Producto/ModificarProducto',
+
+    LISTADO: API_URL + 'productos',
+    DETALLE: (id) => API_URL + `productos/${id}`,
+
+    MODIFICAR_STOCK: (id) => API_URL + `productos/${id}/actualizar/stock`
 }
 
 export const API_UTILIDADES = {
-    LISTADO_COLORES: API_URL + 'Color/TraerColores',
-    LISTADO_TALLES: API_URL + 'Talle/TraerTalles'
+    LISTADO_COLORES: API_URL + 'colores',
+    LISTADO_TALLES: API_URL + 'talles'
 }
 
 export const API_ORDEN_DE_COMPRA = {

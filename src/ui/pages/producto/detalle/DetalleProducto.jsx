@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTags, faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { TextInput, ImgInput } from '../../../components';
 
 import styles from './DetalleProducto.module.css';
+import { API_PRODUCTO } from '../../../../data/api';
 
 const DetalleProducto = () => {
     const detallesVisualizacion = useParams();
     const codigoProducto = detallesVisualizacion.id;
 
+    const [idProducto, setIdProducto] = useState();
     const [codigo, setCodigo] = useState(codigoProducto);
     const [nombre, setNombre] = useState('');
     const [urlImagen, setUrlImagen] = useState('');
@@ -19,15 +21,23 @@ const DetalleProducto = () => {
 
     const [mostrarActualizar, setMostrarActualizar] = useState(false);
 
+    const [finalizado, setFinalizado] = useState(false);
+
     // TRAER DATOS
     useEffect(() => {
-        setNombre('Jean');
-        setUrlImagen('https://www.jamessmart.com/home/wp-content/uploads/ART-25629-JEAN-5B-AZUL.jpg');
-        setVariaciones([
-            { talleId: 1, talleNombre: 'S', colorId: 1, colorNombre: 'Amarillo', cantidad: 3 },
-            { talleId: 1, talleNombre: 'M', colorId: 1, colorNombre: 'Verde', cantidad: 7 },
-            { talleId: 1, talleNombre: 'XL', colorId: 1, colorNombre: 'Negro', cantidad: 10 },
-        ]);
+        fetch(API_PRODUCTO.DETALLE(codigoProducto), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+                setNombre(response.nombre);
+                setUrlImagen(response.url);
+                setVariaciones(response.disponibles);
+                setIdProducto(response.id)
+            })
     }, []);
 
     const cantidadRefs = useRef([]);
@@ -44,8 +54,8 @@ const DetalleProducto = () => {
         cantidadRefs.current.forEach((ref, index) => {
             if (ref !== null && parseInt(ref.value) !== variaciones[index].cantidad) {
                 nuevasVariaciones.push({
-                    talleId: variaciones[index].talleId,
-                    colorId: variaciones[index].colorId,
+                    idTalle: variaciones[index].idTalle,
+                    idColor: variaciones[index].idColor,
                     cantidad: parseInt(ref.value),
                 });
             }
@@ -53,9 +63,24 @@ const DetalleProducto = () => {
         return nuevasVariaciones;
     }
 
+    const actualizarItem = (cambio) => {
+        fetch(API_PRODUCTO.MODIFICAR_STOCK(idProducto), {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cambio),
+        })
+    }
     const hanldeActualizarStock = () => {
         const cambios = obtenerCambiosDeStock();
-        console.table(cambios);
+
+        cambios.forEach((cambio) => {
+            actualizarItem(cambio);
+        })
+
+        alert("Stocks del producto actualizados");
+        setFinalizado(true);
     }
 
     // const handleGuardarCambios = () => {
@@ -138,6 +163,7 @@ const DetalleProducto = () => {
                 <span>Producto </span>
                 <span>{codigoProducto}</span>
             </h1>
+            {finalizado && <Navigate to={"/productos"} />}
             <div className={styles.info_container}>
                 <form className={styles.info}>
                     <div className={styles.info_identificadores}>

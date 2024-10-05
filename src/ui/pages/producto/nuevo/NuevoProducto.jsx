@@ -1,28 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { TextInput, ImgInput } from '../../../components'
 
 import styles from './NuevoProducto.module.css'
+import { API_PRODUCTO, API_UTILIDADES } from '../../../../data/api';
+import { Navigate } from 'react-router-dom';
 const NuevoProducto = () => {
 
     const [codigo, setCodigo] = useState('');
     const [nombre, setNombre] = useState('');
     const [urlImagen, setUrlImagen] = useState('');
 
-    const talles = [
-        { id: 1, nombre: 'XS' },
-        { id: 2, nombre: 'S' },
-        { id: 3, nombre: 'M' },
-        { id: 4, nombre: 'L' },
-        { id: 5, nombre: 'XL' }
-    ]
+    const [talles, setTalles] = useState([]);
+    const [colores, setColores] = useState([]);
 
-    const colores = [
-        { id: 1, nombre: 'Rojo' },
-        { id: 2, nombre: 'Azul' },
-        { id: 3, nombre: 'Verde' },
-        { id: 4, nombre: 'Negro' }
-    ]
+    const [finalizado, setFinalizado] = useState(false);
+
+    useEffect(() => {
+        fetch(API_UTILIDADES.LISTADO_TALLES, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+                setTalles(response);
+            })
+
+        fetch(API_UTILIDADES.LISTADO_COLORES, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+                setColores(response);
+            })
+    })
 
     const [seleccionados, setSeleccionados] = React.useState({});
 
@@ -47,15 +63,26 @@ const NuevoProducto = () => {
         const producto = {
             codigo,
             nombre,
-            urlImagen,
-            tallesColores: getSeleccionados()
+            url: urlImagen,
+            disponibles: getSeleccionados()
         }
 
-        console.log(producto);
+        fetch(API_PRODUCTO.ALTA, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(producto),
+        })
+            .then(response => response.json())
+            .then(response => {
+                setFinalizado(true);
+            })
     }
 
     return (
         <div className={styles.view_container}>
+            {finalizado && <Navigate to={"/productos"} />}
             <h1>Nuevo Producto</h1>
             <form action="">
                 <div className={styles.info}>
