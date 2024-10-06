@@ -18,10 +18,6 @@ export const API_UTILIDADES = {
 }
 
 export const API_ORDEN_DE_COMPRA = {
-    ALTA: API_URL + 'OrdenCompra/CrearOrdenCompra',
-    BAJA: API_URL + 'OrdenCompra/EliminarOrdenCompra',
-    MODIFICAR: API_URL + 'OrdenCompra/ModificarOrdenCompra',
-    
-    LISTADO: API_URL + 'OrdenCompra/TraerOrdenCompra',
-    DETALLE: API_URL + 'OrdenCompra/Detalle',
+    LISTADO: API_URL + 'ordenes',
+    DETALLE: (id) => API_URL + `ordenes/${id}`,
 }
